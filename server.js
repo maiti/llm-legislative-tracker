@@ -32,17 +32,23 @@ app.use(cors());
 app.use(express.json());
 
 // Database setup
-const sequelize = new Sequelize(process.env.DATABASE_URL || 'sqlite::memory:', {
-  dialect: process.env.DATABASE_URL ? 
-    (process.env.DATABASE_URL.startsWith('postgres') ? 'postgres' : 'sqlite') : 
-    'sqlite',
+// Database setup - REPLACE the existing database setup section with this
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: 'postgres',
+  protocol: 'postgres',
   logging: process.env.NODE_ENV === 'development' ? console.log : false,
-  dialectOptions: process.env.DATABASE_URL?.startsWith('postgres') ? {
+  dialectOptions: {
     ssl: {
       require: true,
       rejectUnauthorized: false
     }
-  } : {}
+  },
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  }
 });
 
 // Enhanced Keywords for LLM-powered bill discovery
