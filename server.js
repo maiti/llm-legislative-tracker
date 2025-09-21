@@ -1447,7 +1447,7 @@ app.use((err, req, res, next) => {
 });
 
 // Server startup
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 
 async function startLLMServer() {
   try {
@@ -1532,7 +1532,7 @@ async function startLLMServer() {
     console.log('   👤 Admin login: admin@example.com / admin123');
     console.log(`   🔍 Tracking ${TRACKING_KEYWORDS.length} keywords across multiple categories`);
     
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
       console.log(`🚀 LLM-POWERED SERVER running on port ${PORT}`);
       console.log(`📡 API available at: http://localhost:${PORT}/api`);
       console.log(`🏥 Health check: http://localhost:${PORT}/health`);
