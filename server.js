@@ -1531,7 +1531,7 @@ async function startLLMServer() {
     console.log('   👤 Professional authentication system');
     console.log('   👤 Admin login: admin@example.com / admin123');
     console.log(`   🔍 Tracking ${TRACKING_KEYWORDS.length} keywords across multiple categories`);
-    
+    console.log(`Attempting to bind to PORT: ${PORT} on 0.0.0.0`);
     app.listen(PORT, '0.0.0.0', () => {
       console.log(`🚀 LLM-POWERED SERVER running on port ${PORT}`);
       console.log(`📡 API available at: http://localhost:${PORT}/api`);
